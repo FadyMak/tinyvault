@@ -15,6 +15,7 @@ import { GeistSans } from "geist/font/sans"
 
 import { Button } from "@/components/ui/button"
 import { Toaster } from "@/components/ui/sonner"
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
@@ -61,6 +62,8 @@ export default function RootLayout({
           </main>
 
           <Toaster />
+
+          <Analytics />
         </body>
       </ClerkProvider>
     </html>

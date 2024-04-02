@@ -17,8 +17,9 @@ import { Button } from "@/components/ui/button"
 import { Toaster } from "@/components/ui/sonner"
 
 export const metadata: Metadata = {
-  title: "tinyvault",
-  description: "Share secrets securely.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
+  title: "tinyvault | Share secrets securely.",
+  description: "A simple and secure way to share secrets with people you trust.",
 }
 
 // all child pages and actions will run on the edge

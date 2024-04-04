@@ -16,6 +16,7 @@ import { GeistSans } from "geist/font/sans"
 import { Button } from "@/components/ui/button"
 import { Toaster } from "@/components/ui/sonner"
 import { Analytics } from '@vercel/analytics/react';
+import { Separator } from "@/components/ui/separator"
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
@@ -39,7 +40,7 @@ export default function RootLayout({
     >
       <ClerkProvider>
         <body className="min-h-screen bg-background font-sans antialiased">
-          <header className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+          <header className="py-8 mx-auto max-w-4xl">
             <div className="flex items-center justify-between">
               <Link href="/" className="font-mono font-semibold">
                 tinyvault
@@ -57,9 +58,15 @@ export default function RootLayout({
             </div>
           </header>
 
-          <main className="mx-auto max-w-4xl px-4 pb-8 sm:px-6 lg:px-8">
+          <main className="mx-auto min-h-[calc(100svh-220px)] max-w-4xl mb-8">
             {children}
           </main>
+
+          <Separator />
+
+          <footer className="mx-auto max-w-4xl py-8">
+            <Link href="/privacy" className="text-sm">Privacy Policy</Link>
+          </footer>
 
           <Toaster />
 

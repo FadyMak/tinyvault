@@ -10,18 +10,20 @@ import "./globals.css"
 
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { GeistMono } from "geist/font/mono"
 import { GeistSans } from "geist/font/sans"
 
 import { Button } from "@/components/ui/button"
 import { Toaster } from "@/components/ui/sonner"
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react"
 import { Separator } from "@/components/ui/separator"
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
   title: "tinyvault | Share secrets securely.",
-  description: "A simple and secure way to share secrets with people you trust.",
+  description:
+    "A simple and secure way to share secrets with people you trust.",
 }
 
 // all child pages and actions will run on the edge
@@ -40,10 +42,15 @@ export default function RootLayout({
     >
       <ClerkProvider>
         <body className="min-h-screen bg-background font-sans antialiased">
-          <header className="py-8 mx-auto max-w-4xl">
+          <header className="mx-auto max-w-4xl py-8">
             <div className="flex items-center justify-between">
-              <Link href="/" className="font-mono font-semibold">
-                tinyvault
+              <Link href="/">
+                <Image
+                  width={36}
+                  height={36}
+                  src="/logo.svg"
+                  alt="tinyvault logo"
+                />
               </Link>
               <div>
                 <SignedOut>
@@ -58,14 +65,24 @@ export default function RootLayout({
             </div>
           </header>
 
-          <main className="mx-auto min-h-[calc(100svh-220px)] max-w-4xl mb-8">
+          <main className="mx-auto mb-8 min-h-[calc(100svh-220px)] max-w-4xl">
             {children}
           </main>
 
           <Separator />
 
-          <footer className="mx-auto max-w-4xl py-8">
-            <Link href="/privacy" className="text-sm">Privacy Policy</Link>
+          <footer className="mx-auto flex max-w-4xl justify-between py-8">
+            <div>
+              <Link href="/" className="font-mono font-semibold">
+                tinyvault
+              </Link>
+            </div>
+
+            <div>
+              <Link href="/privacy" className="text-sm">
+                Privacy
+              </Link>
+            </div>
           </footer>
 
           <Toaster />

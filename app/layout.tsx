@@ -48,7 +48,7 @@ export default function RootLayout({
                 <Image
                   width={36}
                   height={36}
-                  src="/logo.svg"
+                  src="/logo.png"
                   alt="tinyvault logo"
                 />
               </Link>
@@ -59,7 +59,13 @@ export default function RootLayout({
                   </SignInButton>
                 </SignedOut>
                 <SignedIn>
-                  <UserButton />
+                  <UserButton
+                    appearance={{
+                      elements: {
+                        userButtonAvatarBox: "size-8",
+                      },
+                    }}
+                  />
                 </SignedIn>
               </div>
             </div>
@@ -76,6 +82,10 @@ export default function RootLayout({
               <Link href="/" className="font-mono font-semibold">
                 tinyvault
               </Link>
+              <span className="font-mono text-muted-foreground">
+                {" "}
+                | Share secrets securely.
+              </span>
             </div>
 
             <div>

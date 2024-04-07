@@ -63,7 +63,7 @@ export async function createSecret(formData: FormData) {
   }
 
   const jwt = await new EncryptJWT({ secret, emails: Array.from(emailsSet) })
-    .setProtectedHeader({ alg: "dir", enc: "A128CBC-HS256" })
+    .setProtectedHeader({ alg: "dir", enc: "A256GCM" })
     .setIssuedAt()
     .setExpirationTime(expiresInValue + expiresInUnit)
     .encrypt(encryptionKey)

@@ -4,7 +4,6 @@ import { SignedOut, SignInButton, useUser } from "@clerk/nextjs"
 import { InfoCircledIcon } from "@radix-ui/react-icons"
 import { toast } from "sonner"
 
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -26,6 +25,7 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { MarkdownLogo } from "@/components/markdown-logo"
 import { SubmitButton } from "@/components/submit-button"
+import { Button } from "@/components/ui/button"
 
 import { createSecret } from "./actions"
 
@@ -94,19 +94,26 @@ export default function Home() {
         </CardContent>
         <SignedOut>
           <CardFooter className="text-sm text-muted-foreground">
-            <InfoCircledIcon className="mr-1 size-4" /> If you would like to
-            view the secret once it has been created, you must
-            <Button variant="link" className="pl-1 pr-0">
-              <SignInButton mode="modal">authenticate</SignInButton>
-            </Button>
-            .
+            <InfoCircledIcon className="mr-2 size-4 shrink-0" />
+            <span>
+              <SignInButton mode="modal">
+                <Button
+                  type="button"
+                  variant="link"
+                  className="h-auto px-0 py-0"
+                >
+                  Sign-in
+                </Button>
+              </SignInButton>{" "}
+              to be able to view the secret once it has been created.
+            </span>
           </CardFooter>
         </SignedOut>
       </Card>
 
       <Card className="p-6">
-        <div className="flex items-end justify-between">
-          <div className="grid gap-2">
+        <div className="block items-end justify-between space-y-4 sm:flex">
+          <div className="grid w-full gap-2">
             <Label>Expires in</Label>
             <div className="flex space-x-2">
               <Input
@@ -114,10 +121,10 @@ export default function Home() {
                 defaultValue="2"
                 placeholder="2"
                 type="number"
-                className="w-24"
+                className="w-full sm:w-24"
               />
               <Select name="expires_in_unit" defaultValue="days">
-                <SelectTrigger className="w-[120px]">
+                <SelectTrigger className="w-full sm:w-[120px]">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -133,7 +140,8 @@ export default function Home() {
               </Select>
             </div>
           </div>
-          <SubmitButton />
+
+          <SubmitButton className="w-full sm:w-auto" />
         </div>
       </Card>
     </form>

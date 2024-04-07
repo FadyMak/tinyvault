@@ -42,7 +42,7 @@ export default function RootLayout({
     >
       <ClerkProvider>
         <body className="min-h-screen bg-background font-sans antialiased">
-          <header className="mx-auto max-w-4xl py-8">
+          <header className="mx-auto max-w-4xl px-4 py-8">
             <div className="flex items-center justify-between">
               <Link href="/">
                 <Image
@@ -71,13 +71,13 @@ export default function RootLayout({
             </div>
           </header>
 
-          <main className="mx-auto mb-8 min-h-[calc(100svh-220px)] max-w-4xl">
+          <main className="mx-auto mb-8 min-h-[calc(100svh-220px)] max-w-4xl px-4">
             {children}
           </main>
 
           <Separator />
 
-          <footer className="mx-auto flex max-w-4xl justify-between py-8">
+          <footer className="mx-auto max-w-4xl justify-between space-y-4 px-4 py-8 sm:flex">
             <div>
               <Link href="/" className="font-mono font-semibold">
                 tinyvault
@@ -88,9 +88,16 @@ export default function RootLayout({
               </span>
             </div>
 
-            <div>
+            <div className="space-x-4">
               <Link href="/privacy" className="text-sm">
                 Privacy
+              </Link>
+
+              <Link
+                href="https://github.com/fadymak/tinyvault"
+                className="text-sm"
+              >
+                Source
               </Link>
             </div>
           </footer>

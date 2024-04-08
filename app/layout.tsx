@@ -77,7 +77,7 @@ export default function RootLayout({
 
           <Separator />
 
-          <footer className="mx-auto max-w-4xl justify-between sm:space-y-4 px-4 py-8 sm:flex">
+          <footer className="mx-auto max-w-4xl justify-between space-y-4 sm:space-y-0 px-4 py-8 sm:flex">
             <div>
               <Link href="/" className="font-mono font-semibold">
                 tinyvault

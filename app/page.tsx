@@ -28,18 +28,25 @@ import { SubmitButton } from "@/components/submit-button"
 import { Button } from "@/components/ui/button"
 
 import { createSecret } from "./actions"
+import { useRouter } from "next/navigation"
 
 export default function Home() {
+  const router = useRouter()
   const { user } = useUser()
 
   return (
     <form
       className="grid gap-6"
       action={async (formData: FormData) => {
-        const { error } = await createSecret(formData)
+        const secret = await createSecret(formData)
 
-        if (error) {
-          toast.error(error)
+        if (secret.error) {
+          toast.error(secret.error)
+          return
+        }
+
+        if (secret.url) {
+          router.push(secret.url)
         }
       }}
     >

@@ -68,12 +68,12 @@ export async function createSecret(formData: FormData) {
     .setExpirationTime(expiresInValue + expiresInUnit)
     .encrypt(encryptionKey)
 
-  redirect(
-    new URL(
+  return {
+    url: new URL(
       `/share?${new URLSearchParams({
         secret: jwt,
       })}`,
       process.env.NEXT_PUBLIC_APP_URL
     ).toString()
-  )
+  }
 }

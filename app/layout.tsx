@@ -9,15 +9,15 @@ import {
 import "./globals.css"
 
 import type { Metadata } from "next"
-import Link from "next/link"
 import Image from "next/image"
+import Link from "next/link"
+import { Analytics } from "@vercel/analytics/react"
 import { GeistMono } from "geist/font/mono"
 import { GeistSans } from "geist/font/sans"
 
 import { Button } from "@/components/ui/button"
-import { Toaster } from "@/components/ui/sonner"
-import { Analytics } from "@vercel/analytics/react"
 import { Separator } from "@/components/ui/separator"
+import { Toaster } from "@/components/ui/sonner"
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
@@ -25,9 +25,6 @@ export const metadata: Metadata = {
   description:
     "A simple and secure way to share secrets with people you trust.",
 }
-
-// all child pages and actions will run on the edge
-export const runtime = "edge"
 
 export default function RootLayout({
   children,
@@ -77,7 +74,7 @@ export default function RootLayout({
 
           <Separator />
 
-          <footer className="mx-auto max-w-4xl justify-between space-y-4 sm:space-y-0 px-4 py-8 sm:flex">
+          <footer className="mx-auto max-w-4xl justify-between space-y-4 px-4 py-8 sm:flex sm:space-y-0">
             <div>
               <Link href="/" className="font-mono font-semibold">
                 tinyvault

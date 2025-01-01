@@ -12,11 +12,11 @@ import {
 } from "@/components/ui/card"
 import { LinkShare } from "@/components/link-share"
 
-export default async function Share({
-  searchParams,
-}: {
-  searchParams: { secret: string }
+export default async function Share(props: {
+  searchParams: Promise<{ secret: string }>
 }) {
+  const searchParams = await props.searchParams
+
   return (
     <div className="grid gap-6">
       <Card>

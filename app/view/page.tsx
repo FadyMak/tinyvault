@@ -16,14 +16,13 @@ import { Unauthorized } from "./unauthorized"
 
 const encryptionKey = base64url.decode(process.env.ENCRYPTION_KEY)
 
-export default async function View({
-  searchParams,
-}: {
-  searchParams: { secret: string }
+export default async function View(props: {
+  searchParams: Promise<{ secret: string }>
 }) {
+  const searchParams = await props.searchParams
   // ensure the user is authenticated, otherwise redirect them to the sign-in flow
   const user = await currentUser()
-  const { redirectToSignIn } = auth()
+  const { redirectToSignIn } = await auth()
 
   if (!user) {
     return redirectToSignIn()

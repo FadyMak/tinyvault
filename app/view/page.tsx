@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card"
 import { LinkShare } from "@/components/link-share"
 
+import { CopySecretButton } from "./copy-secret-button"
 import { Expired } from "./expired"
 import { Unauthorized } from "./unauthorized"
 
@@ -55,18 +56,16 @@ export default async function View(props: {
   return (
     <div className="grid gap-6">
       <Card>
-        <CardHeader>
-          <CardTitle>Secret</CardTitle>
-          <CardDescription>
-            You are authenticated as{" "}
-            <span className="font-semibold">{authorizedEmail}</span> and have
-            been granted access to view this secret.
-          </CardDescription>
+        <CardHeader className="py-4">
+          <CardTitle className="flex items-center justify-between">
+            <span>Secret</span>
+            <CopySecretButton secret={decryptedSecret} />
+          </CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="prose prose-neutral max-w-full">
-            <Markdown>{decryptedSecret}</Markdown>
-          </div>
+        <CardContent className="rounded-b-xl bg-gray-50 p-6">
+          <Markdown className="prose prose-neutral max-w-[75ch] overflow-x-auto font-mono">
+            {decryptedSecret}
+          </Markdown>
         </CardContent>
       </Card>
 

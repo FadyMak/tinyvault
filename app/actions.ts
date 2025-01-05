@@ -1,6 +1,5 @@
 "use server"
 
-import { redirect } from "next/navigation"
 import { currentUser } from "@clerk/nextjs/server"
 import { base64url, EncryptJWT } from "jose"
 
@@ -74,6 +73,6 @@ export async function createSecret(formData: FormData) {
         secret: jwt,
       })}`,
       process.env.NEXT_PUBLIC_APP_URL
-    ).toString()
+    ).toString(),
   }
 }
